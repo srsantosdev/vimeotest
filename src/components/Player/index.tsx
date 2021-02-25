@@ -1,31 +1,17 @@
-import React, { useEffect, useRef, useState } from 'react';
-import VimeoPlayer from '@vimeo/player';
+import React, { useEffect, useRef } from 'react';
 
+import { useCapture } from '../../hooks';
 import { Container } from './styles';
 
 const Player: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
-  const [player, setPlayer] = useState<VimeoPlayer | null>(null);
+  const { registerRef } = useCapture();
 
   useEffect(() => {
-    const iframe = iframeRef.current;
-
-    const instancePlayer = new VimeoPlayer(iframe as HTMLIFrameElement);
-    setPlayer(instancePlayer);
-  }, []);
-
-  useEffect(() => {
-    async function getVideoData() {
-      // const duration = await player?.getDuration();
-      // const currentTime = await player?.getCurrentTime();
-      // const played = await player?.getPlayed();
-      // const videoTitle = await player?.getVideoTitle();
-      // const volume = await player?.getVolume();
-      // const muted = await player?.getMuted();
-    }
-
-    getVideoData();
-  }, [player]);
+    registerRef({
+      ref: iframeRef.current,
+    });
+  }, [registerRef]);
 
   return (
     <Container>
