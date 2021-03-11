@@ -18,8 +18,8 @@ const Player: React.FC = () => {
       <iframe
         ref={iframeRef}
         id="player"
-        src="https://player.vimeo.com/video/515698056"
-        title="Conformity Pro"
+        src="https://player.vimeo.com/video/242620953"
+        title="Aleatorio"
         frameBorder="0"
       />
     </Container>

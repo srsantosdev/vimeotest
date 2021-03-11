@@ -20,13 +20,15 @@ export function useCapture(): CaptureHook {
     }
   }, []);
 
-  player?.on('play', data => {
-    console.log('Play Event: ', data);
-  });
+  if (player) {
+    player?.on('play', data => {
+      console.log('Play Event: ', data);
+    });
 
-  player?.on('pause', data => {
-    console.log('Pause Event: ', data);
-  });
+    player?.on('pause', data => {
+      console.log('Pause Event: ', data);
+    });
+  }
 
   return {
     registerRef,
